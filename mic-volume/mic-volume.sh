@@ -5,8 +5,8 @@ then
   volume=$(pacmd list-sources | grep "\* index:" -A 7 | grep "volume" | awk -F/ '{print $2}')
   mute=$(pacmd list-sources | grep "\* index:" -A 11 | grep "muted")
 else
-  volume=$(pacmd list-sources | grep "$1" -A 7 | grep "volume" | awk -F/ '{print $2}')
-  mute=$(pacmd list-sources | grep "$1" -A 11 | grep "muted" )
+  volume=$(pacmd list-sources | grep "$1" -A 6 | grep "volume" | awk -F/ '{print $2}')
+  mute=$(pacmd list-sources | grep "$1" -A 11 | grep "muted" ) # didn't test this one
 fi
 
 if [ -z "$volume" ]
