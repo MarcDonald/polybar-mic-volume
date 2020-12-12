@@ -5,7 +5,7 @@ then
   volume=$(pacmd list-sources | grep "\* index:" -A 7 | grep "volume" | awk -F/ '{print $2}')
   mute=$(pacmd list-sources | grep "\* index:" -A 11 | grep "muted")
 else
-  volume=$(pacmd list-sources | grep "$1" -A 6 | grep "volume" | awk -F/ '{print $2}')
+  volume=$(pacmd list-sources | grep "$1" -A 7 | grep "volume" | awk -F/ '{print $2}')
   mute=$(pacmd list-sources | grep "$1" -A 11 | grep "muted" )
 fi
 
@@ -15,7 +15,10 @@ then
 else
  if [[ "$mute" == *"yes"* ]]; then
        	echo "[${volume//[[:blank:]]/}]"
-     else
+
+ elif [[ "$mute" == *"no"* ]]; then
        	echo "${volume//[[:blank:]]/}"
+ else
+	echo "!"
  fi
 fi
