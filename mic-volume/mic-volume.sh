@@ -14,8 +14,8 @@ then
   echo "No Mic Found"
 else
  if [[ "$mute" == *"yes"* ]]; then
-       	echo "[$volume]"
+       	echo "[${volume//[[:blank:]]/}]"
      else
-       	echo "$volume"
+       	echo "${volume//[[:blank:]]/}"
  fi
 fi
