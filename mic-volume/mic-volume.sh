@@ -13,12 +13,13 @@ if [ -z "$volume" ]
 then
   echo "No Mic Found"
 else
+volume="${volume//[[:blank:]]/}" 
  if [[ "$mute" == *"yes"* ]]; then
-       	echo "[${volume//[[:blank:]]/}]"
+       	echo "[$volume]"
 
  elif [[ "$mute" == *"no"* ]]; then
-       	echo "${volume//[[:blank:]]/}"
+       	echo "$volume"
  else
-	echo "!"
+	echo "$volume !"
  fi
 fi
