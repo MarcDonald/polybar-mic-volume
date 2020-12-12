@@ -17,7 +17,7 @@ instead
 type = custom/script
 interval = 1
 format = Mic:<label>
-exec = sh PATH_TO_SCRIPT MICROPHONE_NAME
+exec = bash PATH_TO_SCRIPT MICROPHONE_NAME
 ```
 
 For example:
@@ -27,7 +27,7 @@ For example:
 type = custom/script
 interval = 1
 format = Mic:<label>
-exec = sh ~/.config/polybar/mic-volume/mic-volume.sh 'Meteor'
+exec = bash ~/.config/polybar/mic-volume/mic-volume.sh 'Meteor'
 ```
 
 **NB:**
