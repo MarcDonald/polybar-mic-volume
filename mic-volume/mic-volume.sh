@@ -42,7 +42,7 @@ case $1 in
 		if [ -z "$2" ]; then
 			pactl set-source-volume $DEFAULT_SOURCE_INDEX -7%
 		else
-			pactl set-source-volume $DEFAULT_SOURCE_INDEX -7%
+			pactl set-source-volume $2 -7%
 		fi
 		break;
 		;;
