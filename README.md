@@ -1,16 +1,19 @@
 # polybar-mic-volume
 
-Polybar module that displays the volume of a given input device using PulseAudio `pacmd` and controls it using `pactl`.
+Polybar module that displays the volume of a given input device using PulseAudio
+`pacmd` and controls it using `pactl`.
 
 ![Screenshot](/.github/screenshot.png?raw=true)
 
 ## Usage
 
-To use this module, put the following module in your polybar config, substituting `MICROPHONE_NAME` with the name of the
-device you want to display, and substituting `PATH_TO_SCRIPT` with the path to the `mic-volume.sh` script.
+To use this module, put the following module in your Polybar config,
+substituting `MICROPHONE_NAME` with the name or index of the device you want to
+display, and substituting `PATH_TO_SCRIPT` with the path to the `mic-volume.sh`
+script.
 
 If you don't include `MICROPHONE_NAME` the default input device will be used
-instead
+instead.
 
 ```
 [module/mic-volume]
@@ -32,14 +35,18 @@ For example:
 type = custom/script
 interval = 1
 format = Mic:<label>
-exec = bash ~/.config/polybar/mic-volume/mic-volume.sh show-vol 'Meteor'
+exec = bash ~/.config/polybar/mic-volume/mic-volume.sh show-vol 'alsa_input.usb-Samson_Technologies_Samson_Meteor_Mic-00.analog-stereo'
 
 ; Control actions (using pactl)
-click-left = bash ~/.config/polybar/mic-volume/mic-volume.sh mute-vol 'Meteor'
-scroll-up = bash ~/.config/polybar/mic-volume/mic-volume.sh inc-vol 'Meteor'
-scroll-down = bash ~/.config/polybar/mic-volume/mic-volume.sh dec-vol 'Meteor'
+; Example supplying the name of the source
+click-left = bash ~/.config/polybar/mic-volume/mic-volume.sh mute-vol 'alsa_input.usb-Samson_Technologies_Samson_Meteor_Mic-00.analog-stereo'
+; Example supplying the index of the source
+scroll-up = bash ~/.config/polybar/mic-volume/mic-volume.sh inc-vol 2
+; Example leaving the MICROPHONE_NAME blank and using the default source
+scroll-down = bash ~/.config/polybar/mic-volume/mic-volume.sh dec-vol
 ```
 
 **NB:**
-Try to make `MICROPHONE_NAME` as unique as possible so that only one result will show up. If multiple results are
-returned from the search then the first result will be displayed.
+
+The and index of the source can be found by running `pacmd list-sources`. Ignore
+the arrow brackets when using the name.
