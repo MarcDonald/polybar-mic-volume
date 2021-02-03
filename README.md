@@ -1,6 +1,6 @@
 # polybar-mic-volume
 
-Polybar module that displays the volume of a given input device using PulseAudio `pacmd`.
+Polybar module that displays the volume of a given input device using PulseAudio `pacmd` and controls it using `pactl`.
 
 ![Screenshot](/.github/screenshot.png?raw=true)
 
@@ -16,8 +16,13 @@ instead
 [module/mic-volume]
 type = custom/script
 interval = 1
-format = Mic:<label>
-exec = bash PATH_TO_SCRIPT MICROPHONE_NAME
+format = Mic: <label>
+exec = bash PATH_TO_SCRIPT show-vol MICROPHONE_NAME
+
+; Control actions (using pactl)
+click-left = bash PATH_TO_SCRIPT mute-vol MICROPHONE_NAME
+scroll-up = bash PATH_TO_SCRIPT inc-vol MICROPHONE_NAME
+scroll-down = bash PATH_TO_SCRIPT dec-vol MICROPHONE_NAME
 ```
 
 For example:
@@ -27,7 +32,12 @@ For example:
 type = custom/script
 interval = 1
 format = Mic:<label>
-exec = bash ~/.config/polybar/mic-volume/mic-volume.sh 'Meteor'
+exec = bash ~/.config/polybar/mic-volume/mic-volume.sh show-vol 'Meteor'
+
+; Control actions (using pactl)
+click-left = bash ~/.config/polybar/mic-volume/mic-volume.sh mute-vol 'Meteor'
+scroll-up = bash ~/.config/polybar/mic-volume/mic-volume.sh inc-vol 'Meteor'
+scroll-down = bash ~/.config/polybar/mic-volume/mic-volume.sh dec-vol 'Meteor'
 ```
 
 **NB:**
