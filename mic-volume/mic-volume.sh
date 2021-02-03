@@ -28,7 +28,6 @@ case $1 in
   			mute=$(pacmd list-sources | grep "$2" -A 11 | grep "muted" )
 			display_volume
 		fi
-		break;
 		;;
 	"inc-vol")
 		if [ -z "$2" ]; then
@@ -36,7 +35,6 @@ case $1 in
 		else
 			pactl set-source-volume $2 +7%
 		fi
-		break;
 		;;
 	"dec-vol")
 		if [ -z "$2" ]; then
@@ -44,7 +42,6 @@ case $1 in
 		else
 			pactl set-source-volume $2 -7%
 		fi
-		break;
 		;;
 	"mute-vol")
 		if [ -z "$2" ]; then
@@ -52,7 +49,6 @@ case $1 in
 		else
 			pactl set-source-mute $2 toggle
 		fi
-		break;
 		;;
 	*)
 		echo "Invalid script option"
