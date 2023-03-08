@@ -1,5 +1,7 @@
 # polybar-mic-volume
 
+![Maintenance](https://img.shields.io/maintenance/no/2022)
+
 Polybar module that displays the volume of a given input device using PulseAudio
 `pacmd` and controls it using `pactl`.
 
