@@ -1,6 +1,8 @@
 # polybar-mic-volume
 
-![Maintenance](https://img.shields.io/maintenance/no/2022)
+> **Note**
+> I don't use Linux anymore so I don't actively maintain this project, but feel
+> free to make a PR for any fixes that are needed!
 
 Polybar module that displays the volume of a given input device using PulseAudio
 `pacmd` and controls it using `pactl`.
@@ -48,7 +50,6 @@ scroll-up = bash ~/.config/polybar/mic-volume/mic-volume.sh inc-vol 2
 scroll-down = bash ~/.config/polybar/mic-volume/mic-volume.sh dec-vol
 ```
 
-**NB:**
-
-The and index of the source can be found by running `pacmd list-sources`. Ignore
-the arrow brackets when using the name.
+> **Note**
+> The name and index of the source can be found by running `pacmd list-sources`. Ignore
+> the arrow brackets when using the name.
